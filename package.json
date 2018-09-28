@@ -1,0 +1,22 @@
+{
+  "name": "social",
+  "version": "1.0.0",
+  "description": "Social Net App",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app"
+  },
+  "dependencies": {
+    "bcrypt": "*",
+    "body-parser": "^1.18.3",
+    "cors": "*",
+    "express": "*",
+    "jsonwebtoken": "*",
+    "mongoose": "*",
+    "passport": "*",
+    "passport-jwt": "*"
+  },
+  "author": "Danila Medjo",
+  "license": "ISC"
+}

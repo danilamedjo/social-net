@@ -26,3 +26,7 @@ module.exports.getUserByFirstName = function(firstName, callback){
 module.exports.addUser = function(newUser, callback) {
     newUser.save(callback);
 }
+
+module.exports.findAllUsers = function({}, callback) {
+    User.find(callback);
+}

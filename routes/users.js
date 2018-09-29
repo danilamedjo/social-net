@@ -27,8 +27,15 @@ router.post('/authenticate', (req, res, next) => {
 });
 
 // Profile
-router.get('/profile', (req, res, next) => {
-    res.send('PROFILE');
+router.get('/all', (req, res, next) => {
+    User.findAllUsers({}, (err, user) => {
+        if(err){
+            res.send(500, 'Something went wrong!');
+            next();
+        }else{
+        res.send(user);
+        }
+    }) 
 });
 
 

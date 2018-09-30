@@ -9,6 +9,7 @@ const appRoutes: Routes = [
     { path: 'home', component: HomeComponent },
     { path: 'dashboard', component: DashboardComponent },
     { path: 'profile', component: ProfileComponent },
+    { path: 'profile/:id', component: ProfileComponent },
 
     { path: '**', redirectTo: '/home' }
 ];

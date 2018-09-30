@@ -5,7 +5,6 @@ const User = require('../models/user');
 
 // Register
 router.post('/register', (req, res, next) => {
-    console.log(req.body);
     let newUser = new User({
         firstName: req.body.firstName,
         surname: req.body.surname,
@@ -13,10 +12,16 @@ router.post('/register', (req, res, next) => {
         gender: req.body.gender
     });
     User.addUser(newUser, (err, user) => {
-        if(err) {
-            res.json({success: false, msg:'Failed to register user'});
-        }else {
-            res.json({success: true, msg:'User registered'});
+        if (err) {
+            res.json({
+                success: false,
+                msg: 'Failed to register user'
+            });
+        } else {
+            res.json({
+                success: true,
+                msg: 'User registered'
+            });
         }
     });
 });
@@ -26,16 +31,34 @@ router.post('/authenticate', (req, res, next) => {
     res.send('AUTHENTICATE');
 });
 
-// Profile
+// All Users
 router.get('/all', (req, res, next) => {
     User.findAllUsers({}, (err, user) => {
-        if(err){
-            res.send(500, 'Something went wrong!');
+        if (err) {
+            res.status(500, 'Something went wrong!');
             next();
-        }else{
-        res.send(user);
+        } else {
+            res.send(user);
         }
-    }) 
+    })
+});
+
+// Profile
+router.get('/:id', (req, res, next) => {
+    User.getUserById(req.params.id, (err, user) => {
+        if(!user) {
+            return res.status(404).end();
+        }
+        return res.status(200).json(user);
+        if(err) {
+            res.status(500, "Something went wrong");
+        }
+    })
+    
+});
+
+router.get('/friends/:id', (req, res, next) => {
+    
 });
 
 

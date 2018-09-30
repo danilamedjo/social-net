@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { User } from '../../models/user.model';
 import { Observable } from 'rxjs';
+import { User } from '../../models/user.model';
 import { UserService } from '../../services/user.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-dashboard',
@@ -10,20 +11,21 @@ import { UserService } from '../../services/user.service';
 })
 export class DashboardComponent implements OnInit {
 
+  users$: Observable<User[]>;
   users: User[];
   firstName: String;
   surname: String;
   age: Number;
   gender: String;
   friends: String[];
-  users: User[];
 
-  constructor(private userService: UserService) { }
+  constructor(private userService: UserService, private _router: Router) { }
 
   ngOnInit() {
-    // this.users = this.userService.getUsers() {
-    //   () => {}
-    // }
+    this.users$ = this.userService.getUsers();
   }
 
+  onClick(id: Number) {
+    this._router.navigate(['/profile/', { id: id }]);
+  }
 }

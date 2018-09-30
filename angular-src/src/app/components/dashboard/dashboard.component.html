@@ -7,14 +7,15 @@
 
 <div class="container">
   <div class="row">
-    <div class="col-sm-2" id="grid">
-      <h2>Griffith Femto</h2>
+    <div class="col-sm-2" id="grid" *ngFor='let user of (users$ | async)'>
+      <h2>{{ user.firstName }}</h2>
+      <h2>{{ user.surname }}</h2>
       <p>
-        Info:
-        Age: {{ user.age }}
-        Gender: {{ user.gender }}
+        <strong>Info:</strong><br>
+        Age: {{ user.age }}<br>
+        Gender: {{ user.gender }}<br>
       </p>
-      <p><a class="btn btn-secondary btn-sm" href="#" role="button">See &raquo;</a></p>
+      <p><button class="btn btn-secondary btn-sm" (click)="onClick(user._id)">See profile&raquo;</button></p>
     </div>
 
   </div>

@@ -9,7 +9,8 @@ router.post('/register', (req, res, next) => {
         firstName: req.body.firstName,
         surname: req.body.surname,
         age: req.body.age,
-        gender: req.body.gender
+        gender: req.body.gender,
+        friends: req.body.friends
     });
     User.addUser(newUser, (err, user) => {
         if (err) {

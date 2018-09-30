@@ -8,7 +8,7 @@ const userSchema = mongoose.Schema({
     age: Number,
     gender: String,
     friends: [
-        {type: mongoose.Schema.Types.ObjectId, ref: 'User'}
+        {type: String, ref: 'User'}
       ]
 });
 

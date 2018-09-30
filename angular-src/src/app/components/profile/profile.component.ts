@@ -17,7 +17,10 @@ export class ProfileComponent implements OnInit {
   surname: String;
   age: Number;
   gender: String;
-  friends: String[];
+  friendsId: String[];
+  friendId: String;
+  friend: User;
+  friends: User[];
 
 
   constructor(private _route: ActivatedRoute, private userService: UserService) { }
@@ -26,12 +29,35 @@ export class ProfileComponent implements OnInit {
     this._route.paramMap.subscribe(
       params => {
         this._id = params.get('id');
-      }
-    );
+      });
+    this.getUsers();
+
+  }
+
+  getFriends() {
+    this.friends = new Array();
+    for (let i = 0; i < this.friendsId.length; i++) {
+      this.friendId = this.friendsId[i];
+      this.userService.getUser(this.friendId).subscribe(
+        user => {
+          if (user) {
+            this.friend = user;
+            this.friends.push(this.friend);
+          }
+        }
+      );
+    }
+  }
+
+  getUsers() {
     this.userService.getUser(this._id).subscribe(
-      (data) => {
-        this.user = data;
-        this.friends = data.friends;
+      user => {
+        this.user = user;
+        this.friendsId = user.friends;
+      },
+      (err) => { console.log(err); },
+      () => {
+        this.getFriends();
       });
   }
 

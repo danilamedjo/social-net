@@ -24,7 +24,7 @@
 
   <div class="row">
     <div class="col-sm-2" id="grid" *ngFor='let friend of friends'>
-      <h2></h2>
+      <h2>{{ friend.firstName }} {{ friend.surname }}</h2>
       <p>
         Info:
         Age: {{friend.age}}

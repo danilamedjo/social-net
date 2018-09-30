@@ -27,10 +27,6 @@ router.post('/register', (req, res, next) => {
     });
 });
 
-//Authenticate
-router.post('/authenticate', (req, res, next) => {
-    res.send('AUTHENTICATE');
-});
 
 // All Users
 router.get('/all', (req, res, next) => {
@@ -51,16 +47,15 @@ router.get('/:id', (req, res, next) => {
             return res.status(404).end();
         }
         return res.status(200).json(user);
-        if(err) {
-            res.status(500, "Something went wrong");
-        }
     })
     
 });
 
-router.get('/friends/:id', (req, res, next) => {
+// Friends
+router.get('/friends', (req, res) => {
     
-});
+})
+
 
 
 module.exports = router;

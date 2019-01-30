@@ -1,0 +1,38 @@
+<div class="container">
+
+  <div class="jumbotron jumbotron-fluid">
+    <div class="container">
+      <h1 class="display-4">{{ user.firstName }} {{ user.surname }}</h1>
+    </div>
+  </div>
+
+  <ul class="nav nav-tabs">
+    <li class="nav-item">
+      <a class="nav-link" role="button">Friends</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#" role="button">Friends of Friends</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" role="button">Suggested friends</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" role="button">All</a>
+    </li>
+  </ul>
+
+
+  <div class="row">
+    <div class="col-sm-2" id="grid" *ngFor='let friend of friends'>
+      <h2>{{ friend.firstName }} {{ friend.surname }}</h2>
+      <p>
+        Info:
+        Age: {{friend.age}}
+        Gender: {{ friend.gender }}
+      </p>
+      <p><a class="btn btn-secondary btn-sm" href="#" role="button">See &raquo;</a></p>
+    </div>
+
+  </div>
+
+</div>
